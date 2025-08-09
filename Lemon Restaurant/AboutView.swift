@@ -14,7 +14,7 @@ struct AboutView: View {
     @State private var reservations = 0
     var body: some View {
         ZStack{  //acts a layer below the rest.
-            Color.white.opacity(0.0)
+            Color.black.opacity(0.3)
                 .ignoresSafeArea() // allows for color to reach the whole iphone
             VStack {
                 Text("Welcome \(userName) to Little Lemon!")
@@ -23,11 +23,11 @@ struct AboutView: View {
                     .padding()
                     .background(
                         Capsule()
-                            .fill(Color.yellow.opacity(0.3))
+                            .fill(Color.black.opacity(0.9))
                     )
                     .overlay(
                         Capsule()
-                            .stroke(Color.white, lineWidth: 1)
+                            .stroke(Color.white, lineWidth: 5)
                     )
                     .offset(y: -80)
                 
@@ -39,7 +39,7 @@ struct AboutView: View {
                     .padding(10)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.black, lineWidth: 2)
+                            .stroke(Color.white, lineWidth: 5)
                     )
                     .offset(y: -60)
                 

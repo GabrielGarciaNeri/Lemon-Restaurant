@@ -101,6 +101,7 @@ struct ReservationForm: View {
                     
                     // condition ? A : B
                     
+                    
                     withAnimation { didSubmit = true } //makes a fade in animation for didSubmit.
                 }
             } message: {

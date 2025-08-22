@@ -21,7 +21,7 @@ struct MenuItemView: View {
             }
             Spacer()
 
-            if item.price > 10 {
+            if item.price >= 10 {
                 HStack {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)

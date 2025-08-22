@@ -24,6 +24,23 @@ struct MenuView: View {
         menuItems.sorted { $0.price < $1.price }
     }
     
+    var premiumCount: Int {
+        let premiumFilter = menuItems.filter { item in item.price >= 10 }
+        return premiumFilter.count
+    }
+    
+    var premiumCount2: Int {
+        menuItems.filter {$0.price >= 10 }.count
+        
+    }
+    
+    var regularCount: Int {
+        menuItems.filter {$0.price < 10 }.count
+    }
+    
+    var totalPrice: Double {
+        menuItems.reduce(0) { $0 + $1.price }
+    }
     
     @State private var showMessage: Bool  = false
     @State private var showThankYouMessage: Bool = false
@@ -83,6 +100,10 @@ struct MenuView: View {
             }
             .padding()
             
+            Text("Average price: $\(String(format: "%.2f", totalPrice / Double(menuItems.count)))")
+                .foregroundColor(.gray)
+                .font(.title3)
+            
             // VStack
             VStack(spacing: 20){
                 Toggle("Show a special text" , isOn: $showMessage)
@@ -118,8 +139,12 @@ struct MenuView: View {
             List(sortedMenuItems){ item in
                 MenuItemView(item: item)
             }
-            
-          /*  List {
+                
+            Text("Premium: \(premiumCount) | Regular: \(regularCount) | Total: $\(totalPrice, specifier: "%.2f")")
+                .padding()
+                .background(.yellow.opacity(0.2))
+                .cornerRadius(10)
+                /*  List {
                 ForEach(menuItems.sorted(by: {$0.key < $1.key}), id: \.key){(name, price) in
                     HStack {
                         VStack(alignment: .leading) {
